@@ -1,19 +1,25 @@
 'use strict';
-const WeatherModel = require("../models/weatherModel");
+const WeatherImage = require("weatherimage");
 
 // app.route('image/lat/:lat/lon/:lon/title/:title')
-exports.getImage = function (req, res) {
-  console.log("WeatherModel: " + req.params); 
-
-  WeatherModel.getWeatherImage(req.params, function (err, imageStream) {
-
-    if (err) {
-      res.send(err);
-      return;
+exports.getImage = async (req, res) => {
+    const weatherConfig = {
+        lat: req.params.lat,            // lat: "41.7476",
+        lon: req.params.lon,            // lon: "-70.6676",
+        agent: "ken@faubel.org",
+        title: req.params.title         // "Forecast for Onset, MA"
     }
 
-    res.writeHead(200, { 'Content-Type': 'image/png' });
+    console.log("WeatherController: " + JSON.stringify(weatherConfig, null, 4)); 
+
+    const weatherImage = new WeatherImage(weatherConfig);
+
+    const imageStream = await weatherImage.getImageStream();
+
+    if (imageStream === null) {
+        res.send("Uanble to retreive image.  Somethign went wrong");
+        return;
+    }
 
     imageStream.pipe(res);
-  });
 };

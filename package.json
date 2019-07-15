@@ -1,5 +1,5 @@
 {
-  "name": "imageserver",
+  "name": "newsserver",
   "version": "1.0.0",
   "description": "Simple REST image server",
   "main": "server.js",
@@ -28,6 +28,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-basic-auth": "^1.2.0",
-    "weatherapi": "https://github.com/kfaubel/weatherImage.git"
+    "weatherapi": "https://github.com/kfaubel/weatherImage.git",
+    "weatherimage": "git+https://github.com/kfaubel/weatherImage.git"
   }
 }
