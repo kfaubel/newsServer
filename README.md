@@ -2,9 +2,8 @@
 
 NewsServer provides images rendered from various information sources that can be used in a slideshow.  To do this, static URLs are required to reference the image.
 
-Each image is rendered to a PNG file and returned as part of a guest request.
+Each image is rendered to a 1920x1080 PNG file and returned as part of a REST request.
 
-So far these are the sources that are available.
 
 ## Weather
 ### Lattitude & Longitude
