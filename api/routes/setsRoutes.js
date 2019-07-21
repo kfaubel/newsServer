@@ -10,12 +10,16 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname + '../../../public/index.html'));
   })
 
-  // Weather Image route  
-  app.route('/weather/image/lat/:lat/lon/:lon/title/:title')
-  .get(weatherController.getImage); 
+  // Weather Image route for lat/lon 
+  app.route('/weather/forecast/lat/:lat/lon/:lon/title/:title')
+  .get(weatherController.getImageLatLon); 
 
-  // Baseball Image route  
-  app.route('/baseball/image/team/:team')
+ // Weather Image route for lat/lon 
+ app.route('/weather/forecast/zip/:zip/key/:key/title/:title')
+ .get(weatherController.getImageZip); 
+
+ // Baseball Image route  
+  app.route('/baseball/schedule/team/:team')
   .get(baseballController.getImage); 
 };
     

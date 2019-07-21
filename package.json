@@ -32,5 +32,13 @@
     "weatherimage": "git+https://github.com/kfaubel/weatherImage.git",
     "baseballimage": "git+https://github.com/kfaubel/baseballImage.git",
     "xss-clean": "^0.1.1"
+  },
+  "nodemonConfig": {
+    "name": "nodemon",
+    "watch": [
+      "api/**/*",
+      "public/index.html",
+      "server.js"
+    ]
   }
 }
