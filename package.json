@@ -29,8 +29,8 @@
     "express": "^4.17.1",
     "express-basic-auth": "^1.2.0",
     "express-rate-limit": "^5.0.0",
-    "weatherapi": "https://github.com/kfaubel/weatherImage.git",
     "weatherimage": "git+https://github.com/kfaubel/weatherImage.git",
+    "baseballimage": "git+https://github.com/kfaubel/baseballImage.git",
     "xss-clean": "^0.1.1"
   }
 }

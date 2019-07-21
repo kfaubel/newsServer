@@ -17,7 +17,7 @@ exports.getImage = async (req, res) => {
     const imageStream = await weatherImage.getImageStream();
 
     if (imageStream === null) {
-        res.send("Uanble to retreive image.  Somethign went wrong");
+        res.send("Uanble to retreive image.  Something went wrong");
         return;
     }
 
