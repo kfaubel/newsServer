@@ -17,12 +17,14 @@ exports.getImage = async (req, res) => {
 
     const baseballImage = new BaseballImage();
 
-    const imageStream = await baseballImage.getImageStream(req.params.team);
+    const result = await baseballImage.getImageStream(req.params.team);
+    const imageStream = result.stream;
 
     if (imageStream === null) {
         res.send("Uanble to retreive image.  Something went wrong");
         return;
     }
+    res.setHeader("Expires", result.expires);
 
     imageStream.pipe(res);
 };

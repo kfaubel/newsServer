@@ -35,12 +35,15 @@ exports.getImageZip = async (req, res) => {
 
     const weatherImage = new WeatherImage();
 
-    const imageStream = await weatherImage.getImageStream(weatherConfig);
+    const result = await weatherImage.getImageStream(weatherConfig);
+    const imageStream = result.stream;
 
     if (imageStream === null) {
         res.send("Uanble to retreive image.  Something went wrong");
         return;
     }
+
+    res.setHeader("Expires", result.expires);
 
     imageStream.pipe(res);
 };
