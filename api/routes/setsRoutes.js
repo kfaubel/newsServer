@@ -1,7 +1,7 @@
 'use strict';
 const path = require('path');
 
-module.exports = function(app) {
+module.exports = function(app, logger) {
   var weatherController = require('../controllers/weatherController');
   var baseballController = require('../controllers/baseballController');
 
@@ -11,7 +11,7 @@ module.exports = function(app) {
   })
 
   // Weather Image route for lat/lon 
-  app.route('/weather/forecast/lat/:lat/lon/:lon/title/:title')
+  app.route('/weather/forecast/lat/:lat/lon/:lon/title/:title/days/:days')
   .get(weatherController.getImageLatLon); 
 
  // Weather Image route for lat/lon 

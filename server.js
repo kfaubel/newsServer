@@ -2,6 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const xss = require('xss-clean');
+const logger = require("./logger");
+
+logger.setLevel("silly");
+logger.silly("Silly");
+logger.info("Info");
 
 const port = process.env.PORT || 80;
 
@@ -30,6 +35,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const routes = require('./api/routes/setsRoutes'); //importing route
-routes(app); //register the route
+routes(app, logger); //register the route
 
-console.log('NewsServer started on: ' + port);
+logger.info('NewsServer started on: ' + port);

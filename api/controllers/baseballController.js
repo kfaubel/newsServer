@@ -1,5 +1,6 @@
 'use strict';
 const BaseballImage = require("baseballimage");
+const logger = require("../../logger");
 
 // app.route('/baseball/image/team/:team')
 exports.getImage = async (req, res) => {
@@ -13,9 +14,9 @@ exports.getImage = async (req, res) => {
 
     // team = req.params.team;
 
-    console.log("BaseballController: " + req.params.team); 
+    logger.info("BaseballController: " + req.params.team); 
 
-    const baseballImage = new BaseballImage();
+    const baseballImage = new BaseballImage(logger);
 
     const result = await baseballImage.getImageStream(req.params.team);
     const imageStream = result.stream;
