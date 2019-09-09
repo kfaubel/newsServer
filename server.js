@@ -4,9 +4,10 @@ const bodyParser = require('body-parser');
 const xss = require('xss-clean');
 const logger = require("./logger");
 
+const path = require('path');
+
 logger.setLevel("silly");
-logger.silly("Silly");
-logger.info("Info");
+logger.info("Starting newsServer...");
 
 const port = process.env.PORT || 80;
 
@@ -16,7 +17,7 @@ app.use(cors());
 app.use(xss());
 app.listen(port);
 
-const basicAuth = require('express-basic-auth')
+//const basicAuth = require('express-basic-auth')
  
 // app.use(basicAuth({
 //    users: { 'ken': 'olivia' }
@@ -29,12 +30,25 @@ const basicAuth = require('express-basic-auth')
 //   message: 'Too many requests' // message to send
 // });
 
-
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.disable('etag'); // Don't check cache, return a new item each time. Prevents http status 304 
+
+app.use((req, res, next) => {
+    // http://expressjs.com/en/4x/api.html
+    logger.info("Request:  " + req.originalUrl);         
+  
+    res.on("finish", () => {
+        logger.info("Response: " + res.statusCode);  
+    });
+
+    next();  
+});
 
 const routes = require('./api/routes/setsRoutes'); //importing route
-routes(app, logger); //register the route
+routes(app); //register the route
 
-logger.info('NewsServer started on: ' + port);
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/config', express.static(path.join(__dirname, 'config')));
+
+logger.info('NewsServer started on port: ' + port);

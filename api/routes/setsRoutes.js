@@ -1,7 +1,8 @@
 'use strict';
 const path = require('path');
+const express = require('express');
 
-module.exports = function(app, logger) {
+module.exports = function(app) {
   var weatherController = require('../controllers/weatherController');
   var baseballController = require('../controllers/baseballController');
 
@@ -14,11 +15,11 @@ module.exports = function(app, logger) {
   app.route('/weather/forecast/lat/:lat/lon/:lon/title/:title/days/:days')
   .get(weatherController.getImageLatLon); 
 
- // Weather Image route for lat/lon 
- app.route('/weather/forecast/zip/:zip/key/:key/title/:title')
- .get(weatherController.getImageZip); 
+  // Weather Image route for lat/lon 
+  app.route('/weather/forecast/zip/:zip/key/:key/title/:title')
+  .get(weatherController.getImageZip); 
 
- // Baseball Image route  
+  // Baseball Image route  
   app.route('/baseball/schedule/team/:team')
   .get(baseballController.getImage); 
 };
