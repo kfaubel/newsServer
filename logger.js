@@ -10,7 +10,7 @@ const logFormat = printf(({ level, message, label, timestamp }) => {
 
 const logger = createLogger({
     format: combine(
-        label({ label: 'app.js' }),
+        label({ label: 'newsServer' }),
         format.colorize(),
         format.simple(),
         format.timestamp(),
