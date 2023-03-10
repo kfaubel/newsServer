@@ -20,16 +20,16 @@
   },
   "homepage": "https://github.com/kfaubel/imageServer#readme",
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.21"
   },
   "dependencies": {
-    "@google-cloud/storage": "^5.18.2",
+    "@google-cloud/storage": "^5.20.5",
     "baseballimage": "github:kfaubel/baseballImage",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
-    "express": "^4.17.3",
+    "express": "^4.18.2",
     "express-basic-auth": "^1.2.1",
-    "express-rate-limit": "^6.3.0",
+    "express-rate-limit": "^6.7.0",
     "weatherimage": "github:kfaubel/weatherImage",
     "xss-clean": "^0.1.1"
   },
